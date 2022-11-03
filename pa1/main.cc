@@ -9,6 +9,7 @@ void parseLine(const std::string &line, std::string &formulaStr, std::string &as
   // your code starts here
 }
 
+
 // The program shall continuously ask for new inputs from standard input and output to the standard output
 // The program should terminate gracefully (and quietly) once it sees EOF
 int main() {
