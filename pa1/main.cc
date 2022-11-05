@@ -19,8 +19,8 @@ int main() {
     std::string formulaStr; // store the formula string
     std::string assignmentStr; // store the assignment string
     // your code starts here
-    cout << "hi";
-    cout << "saved";
-    cout << "without save";
+    std::cout << "hi";
+    std::cout << "saved";
+    std::cout << "without save";
   }
 }
