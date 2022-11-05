@@ -22,7 +22,7 @@ class TreeNode {
 
 };
 
-// concrete tree node of opertaor type
+// concrete tree node of operator type
 class OperatorNode : public TreeNode {
   public:
     OperatorNode(std::string cntt);
