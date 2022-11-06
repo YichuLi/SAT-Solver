@@ -6,16 +6,21 @@ FormulaParser::FormulaParser(std::string ln): tknzr {new Tokenizer{ln}} {}
 
 TreeNode *FormulaParser::parseConjTerm() {
   // your code starts here
+  TreeNode* t1 = parseTerm();
   return nullptr;
 }
 
 TreeNode *FormulaParser::parseTerm() {
   // your code starts here
+  if (tknzr->getToken().type == "LPR") {
+    TreeNode* t = parseFormula();
+  }
   return nullptr;
 }
 
 TreeNode *FormulaParser::parseFormula() {
   // your code starts here
+  TreeNode* t1 = parseConjTerm();
   return nullptr;
 }
 

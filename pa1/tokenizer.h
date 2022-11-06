@@ -17,13 +17,18 @@ class Tokenizer
 {
   // your code starts here
   private:
-  public:
     std::vector<Token> tokens;
-    std::string str;
+    int counter = 0;
+    // std::string str;
+  public:
+    // std::vector<Token> tokens;
+    // std::string str;
     Tokenizer(std::string ln);
     bool advanceToken(); // advance to the next token; return false if no more token exist
     bool hasToken() const; // check whether there is a current token
     Token getToken(); // returns the token being processed
+    void addCounter();
+    int getCounter();
 
 };
 

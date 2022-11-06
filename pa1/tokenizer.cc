@@ -122,58 +122,34 @@ Tokenizer::Tokenizer(std::string ln) {
     else {
       std::cout << "ERROR: Invalid token." << std::endl;
     }
-    
   }
 }
 
 bool Tokenizer::advanceToken() {
   // your code starts here
-
+  if (counter + 1 < tokens.size()) {
+    return true;
+  }
   return false;
 }
 
 bool Tokenizer::hasToken() const {
   // your code starts here
+  if (counter < tokens.size()) {
+    return true;
+  }
   return false;
 }
 
 // only can be called when hasToken() is true
 Token Tokenizer::getToken() {
-  Token resultToken;
-  resultToken.content = str;
-  // your code starts there
-  if (str == ";") {
-    resultToken.type = "SEMI";
-  }
-  else if (str == "+") {
-    resultToken.type = "ADD";
-  }
-  else if (str == "*") {
-    resultToken.type = "MULT";
-  }
-  else if (str == "-") {
-    resultToken.type = "NEG";
-  }
-  else if (str == "(") {
-    resultToken.type = "LPR";
-  }
-  else if (str == ")") {
-    resultToken.type = "RPR";
-  }
-  else if (str == ",") {
-    resultToken.type = "COMMA";
-  }
-  else if (str == ":") {
-    resultToken.type = "COL";
-  }
-  else if (str == "0" || str == "1") {
-    resultToken.type = "CONST";
-  }
-  else if (isVarName(str)) {
-    resultToken.type = "VAR_NAME";
-  }
-  else {
-    std::cout << "invalid token:" << str << std::endl;
-  }
-  return resultToken;
+  return tokens[counter];
+}
+
+void Tokenizer::addCounter() {
+  counter++;
+}
+
+int Tokenizer::getCounter() {
+  return counter;
 }
