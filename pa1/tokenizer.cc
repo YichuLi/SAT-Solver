@@ -1,7 +1,5 @@
 #include "tokenizer.h"
 
-
-
 bool isLetter(char c) {
   if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
     return true;
@@ -112,31 +110,25 @@ Tokenizer::Tokenizer(std::string ln) {
         i++;
       }
       i--;
-      t.type = "VAR_NAME";
-      t.content = str;
-      tokens.push_back(t);
+      if (str.size() > 10) {
+        std::cout << "ERROR: Invalid token." << std::endl;
+      }
+      else {
+        t.type = "VAR_NAME";
+        t.content = str;
+        tokens.push_back(t);
+      }
     }
     else {
       std::cout << "ERROR: Invalid token." << std::endl;
     }
     
   }
-  // while (ln[start] == ' ') {
-  //   start++;
-  // }
-  // int i = start;
-  // for (; i < len; i++) {
-  //   if (ln[i] == ' ') {
-  //     str = ln.substr(start, i - start);
-  //     start = i + 1;
-  //     std::cout << str << std::endl;
-  //     tokens.push_back(getToken());
-  //   }
-  // }
 }
 
 bool Tokenizer::advanceToken() {
   // your code starts here
+
   return false;
 }
 
