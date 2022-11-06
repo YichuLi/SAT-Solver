@@ -19,8 +19,12 @@ int main() {
     std::string formulaStr; // store the formula string
     std::string assignmentStr; // store the assignment string
     // your code starts here
-    std::cout << "hi";
-    std::cout << "saved";
-    std::cout << "without save";
+    std::getline(std::cin, line);
+    Tokenizer t(line);
+    std::vector<Token> ex = t.tokens;
+    std::cout << ex.size() << std::endl;
+    for (Token t : ex) {
+      std::cout << t.type << ": " << t.content << std::endl;
+    }
   }
 }

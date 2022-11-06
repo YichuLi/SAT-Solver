@@ -2,6 +2,9 @@
 #define TOKENIZER_H
 
 #include <string>
+#include <vector>
+#include <sstream>
+#include <iostream>
 
 struct Token
 {
@@ -13,7 +16,10 @@ struct Token
 class Tokenizer
 {
   // your code starts here
+  private:
   public:
+    std::vector<Token> tokens;
+    std::string str;
     Tokenizer(std::string ln);
     bool advanceToken(); // advance to the next token; return false if no more token exist
     bool hasToken() const; // check whether there is a current token
