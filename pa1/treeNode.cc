@@ -21,8 +21,16 @@ void TreeNode::updateLeftChild(TreeNode *lChild) {
 }
 
 void TreeNode::updateChildren(TreeNode *lChild, TreeNode *rChild) {
-  this->rightChild = lChild;
+  this->leftChild = lChild;
   this->rightChild = rChild;
+}
+
+TreeNode* TreeNode::getL() {
+  return this->leftChild;
+}
+
+TreeNode* TreeNode::getR() {
+  return this->rightChild;
 }
 
 OperatorNode::OperatorNode(std::string cntt): TreeNode{cntt} {}

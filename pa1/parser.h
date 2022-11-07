@@ -18,6 +18,8 @@ class FormulaParser {
   public:
     FormulaParser(std::string ln);
     TreeNode *getTreeRoot(); // parse the Boolean formula and return the root node of the formula syntax tree
+    int getFalse();
+    bool hasToken();
     ~FormulaParser();
 };
 
@@ -27,6 +29,7 @@ class AssignmentParser {
   public:
     AssignmentParser(std::string ln);
     std::map<std::string, bool> parseAssignment();
+    int getFalse();
     ~AssignmentParser();
 };
 

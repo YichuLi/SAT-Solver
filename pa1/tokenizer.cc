@@ -32,6 +32,7 @@ bool isVarName(std::string str) {
     }
     return true;
   }
+  return false;
 }
 
 Tokenizer::Tokenizer(std::string ln) {
@@ -111,7 +112,7 @@ Tokenizer::Tokenizer(std::string ln) {
       }
       i--;
       if (str.size() > 10) {
-        std::cout << "ERROR: Invalid token." << std::endl;
+        isFalse = 0;
       }
       else {
         t.type = "VAR_NAME";
@@ -120,7 +121,7 @@ Tokenizer::Tokenizer(std::string ln) {
       }
     }
     else {
-      std::cout << "ERROR: Invalid token." << std::endl;
+      isFalse = 0;
     }
   }
 }
@@ -131,6 +132,14 @@ bool Tokenizer::advanceToken() {
     return true;
   }
   return false;
+}
+
+bool Tokenizer::nextTokenType(std::string stype) {  // only when advanceToken() is true
+  return advanceToken() && tokens[counter + 1].type == stype;
+}
+
+bool Tokenizer::currTokenType(std::string stype) {
+  return hasToken() && tokens[counter].type == stype;
 }
 
 bool Tokenizer::hasToken() const {
@@ -152,4 +161,8 @@ void Tokenizer::addCounter() {
 
 int Tokenizer::getCounter() {
   return counter;
+}
+
+int Tokenizer::getTotal() {
+  return tokens.size();
 }

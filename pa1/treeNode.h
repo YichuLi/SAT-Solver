@@ -19,6 +19,8 @@ class TreeNode {
     void updateLeftChild(TreeNode *lChild); // for the operator "-", the operand is stored in leftChild
     void updateChildren(TreeNode *lChild, TreeNode *rChild);
     virtual ~TreeNode();
+    TreeNode* getL();
+    TreeNode* getR();
 
 };
 

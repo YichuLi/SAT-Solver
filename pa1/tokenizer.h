@@ -25,11 +25,14 @@ class Tokenizer
     // std::string str;
     Tokenizer(std::string ln);
     bool advanceToken(); // advance to the next token; return false if no more token exist
+    bool nextTokenType(std::string type);
+    bool currTokenType(std::string type);
     bool hasToken() const; // check whether there is a current token
     Token getToken(); // returns the token being processed
     void addCounter();
     int getCounter();
-
+    int getTotal();
+    int isFalse = -1;
 };
 
 #endif
