@@ -3,7 +3,6 @@
 #include <map>
 #include "parser.h"
 #include "treeNode.h"
-// #include <queue>
 
 std::string falseType[] = { "Invalid input", "Incomplete assignment", "Contradicting assignment"};
 int code = -1;
