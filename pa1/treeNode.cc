@@ -63,10 +63,14 @@ VariableNode::VariableNode(std::string cntt): TreeNode{cntt} {}
 
 bool VariableNode::evaluate(const std::map<std::string, bool> &assignment) const {
   // your code starts here
-  if (this->getContent() == "1") {
-    return true;
+  if (!assignment.count(this->getContent())) {
+    return false;
   }
-  return false;
+  return assignment.at(this->getContent());
+}
+
+void VariableNode::setFalse(int code) {
+  isFalse = code;
 }
 
 TreeNode::~TreeNode() {

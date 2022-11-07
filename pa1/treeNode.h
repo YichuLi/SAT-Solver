@@ -21,7 +21,6 @@ class TreeNode {
     virtual ~TreeNode();
     TreeNode* getL();
     TreeNode* getR();
-
 };
 
 // concrete tree node of operator type
@@ -41,8 +40,10 @@ class ConstantNode : public TreeNode {
 // concrete tree node of varibale type
 class VariableNode : public TreeNode {
   public:
+    int isFalse = -1;
     VariableNode(std::string cntt);
     bool evaluate(const std::map<std::string, bool> &assignment) const override;
+    void setFalse(int i);
 };
 
 #endif

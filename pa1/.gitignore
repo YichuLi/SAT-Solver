@@ -9,5 +9,4 @@ tokenizer.o
 treeNode.d
 treeNode.o
 tempCodeRunnerFile.cc
-.vscode\settings.json
 test.in

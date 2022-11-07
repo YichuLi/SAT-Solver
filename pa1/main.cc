@@ -6,17 +6,18 @@
 
 std::string falseType[] = { "Invalid input", "Incomplete assignment", "Contradicting assignment"};
 int code = -1;
+TreeNode* root;
+std::map<std::string, bool> assignment;
 
 // a helper function parsing the input into the formula string and the assignment string
 void parseLine(const std::string &line, std::string &formulaStr, std::string &assignmentStr) {
   // your code starts here
   FormulaParser* fp = new FormulaParser(formulaStr);
-  TreeNode* root = fp->getTreeRoot();
+  root = fp->getTreeRoot();
   if (fp->hasToken()) {
     code = 0;
     std::cout << "Error: " << falseType[0] << std::endl;
   }
-  // for (int i = 0; i < )
   else if (fp->getFalse() != -1) {
     code = fp->getFalse();
     std::cout << "Error: " << falseType[fp->getFalse()] << std::endl;
@@ -27,7 +28,7 @@ void parseLine(const std::string &line, std::string &formulaStr, std::string &as
   //   std::cout << root->getR()->getContent() << std::endl;
   // }
   AssignmentParser* ap = new AssignmentParser(assignmentStr);
-  std::map<std::string, bool> tab = ap->parseAssignment();
+  assignment = ap->parseAssignment();
   if (ap->getFalse() != -1) {
     std::cout << "Error: " << falseType[ap->getFalse()] << std::endl;
   }
@@ -64,7 +65,8 @@ int main() {
       std::cout << "Error: " << falseType[0] << std::endl;
     }
     parseLine(line, formulaStr, assignmentStr);
-
+    bool res = root->evaluate(assignment);
+    
     // Tokenizer t(line);
 
     // if (t.isFalse != -1) {
