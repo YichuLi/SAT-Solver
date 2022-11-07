@@ -16,11 +16,11 @@ void parseLine(const std::string &line, std::string &formulaStr, std::string &as
   root = fp->getTreeRoot();
   if (fp->hasToken()) {
     code = 0;
-    std::cout << "Error: " << falseType[0] << std::endl;
+    std::cout << "Error: " << falseType[code] << std::endl;
   }
   else if (fp->getFalse() != -1) {
     code = fp->getFalse();
-    std::cout << "Error: " << falseType[fp->getFalse()] << std::endl;
+    std::cout << "Error: " << falseType[code] << std::endl;
   }
   // else {
   //   std::cout << root->getContent() << std::endl;
@@ -30,8 +30,11 @@ void parseLine(const std::string &line, std::string &formulaStr, std::string &as
   AssignmentParser* ap = new AssignmentParser(assignmentStr);
   assignment = ap->parseAssignment();
   if (ap->getFalse() != -1) {
-    std::cout << "Error: " << falseType[ap->getFalse()] << std::endl;
+    code = ap->getFalse();
+    std::cout << "Error: " << falseType[code] << std::endl;
   }
+
+
 }
 
 
@@ -62,11 +65,30 @@ int main() {
       assignmentStr = line.substr(split + 1, len - 1 - split);
     }
     else if (line[split] != ';'){
-      std::cout << "Error: " << falseType[0] << std::endl;
+      code = 0;
+      std::cout << "Error: " << falseType[code] << std::endl;
     }
     parseLine(line, formulaStr, assignmentStr);
-    bool res = root->evaluate(assignment);
-    
+
+    Tokenizer t(formulaStr);
+    std::vector<std::string> var;
+    for (int i = 0; i < t.getTotal(); i++) {
+      if (t.getToken().type == "VAR_NAME") {
+        var.push_back(t.getToken().content);
+      }
+      t.addCounter();
+    }
+    for (int i = 0; i < var.size(); i++) {
+      if (!assignment.count(var[i])) {
+        code = 1;
+        std::cout << "Error: " << falseType[code] << std::endl;
+      }
+    }
+    if (code == -1) {
+      bool res = root->evaluate(assignment);
+      std::cout << "answer: " << res << std::endl;
+    }
+
     // Tokenizer t(line);
 
     // if (t.isFalse != -1) {
@@ -79,4 +101,5 @@ int main() {
     //   t.addCounter();
     // }
   }
+  return 0;
 }

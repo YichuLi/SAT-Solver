@@ -38,13 +38,13 @@ OperatorNode::OperatorNode(std::string cntt): TreeNode{cntt} {}
 bool OperatorNode::evaluate(const std::map<std::string, bool> &assignment) const {
   // your code starts here
   if (this->getContent() == "*") {
-    return this->getLeftChild() && this->getRightChild();
+    return this->getLeftChild()->evaluate(assignment) && this->getRightChild()->evaluate(assignment);
   }
   if (this->getContent() == "+") {
-    return this->getLeftChild() || this->getRightChild();
+    return this->getLeftChild()->evaluate(assignment) || this->getRightChild()->evaluate(assignment);
   }
   if (this->getContent() == "-") {
-    return !this->getLeftChild();
+    return !this->getLeftChild()->evaluate(assignment);
   }
   return false;
 }
