@@ -88,6 +88,11 @@ int main() {
       bool res = root->evaluate(assignment);
       std::cout << "answer: " << res << std::endl;
     }
+    else {
+      std::cout << "Error: " << falseType[code] << std::endl;
+    }
+    // assignment.clear();
+    code = -1;
 
     // Tokenizer t(line);
 
