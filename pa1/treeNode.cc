@@ -17,7 +17,7 @@ TreeNode *TreeNode::getRightChild() const {
 }
 
 void TreeNode::updateLeftChild(TreeNode *lChild) {
- this->rightChild = lChild;
+ this->leftChild = lChild;
 }
 
 void TreeNode::updateChildren(TreeNode *lChild, TreeNode *rChild) {

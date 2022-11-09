@@ -14,6 +14,10 @@ void parseLine(const std::string &line, std::string &formulaStr, std::string &as
   // your code starts here
   FormulaParser* fp = new FormulaParser(formulaStr);
   root = fp->getTreeRoot();
+  std::cout << root->getContent() << std::endl;
+  std::cout << root->getR()->getContent() << std::endl;
+  std::cout << root->getR()->getL()->getContent() << std::endl;
+  std::cout << __LINE__ << std::endl;
   if (fp->hasToken()) {
     code = 0;
     std::cout << "Error: " << falseType[code] << std::endl;
@@ -27,13 +31,14 @@ void parseLine(const std::string &line, std::string &formulaStr, std::string &as
   //   std::cout << root->getL()->getContent() << std::endl;
   //   std::cout << root->getR()->getContent() << std::endl;
   // }
+  // std::cout << __LINE__ << std::endl;
   AssignmentParser* ap = new AssignmentParser(assignmentStr);
   assignment = ap->parseAssignment();
   if (ap->getFalse() != -1) {
     code = ap->getFalse();
     std::cout << "Error: " << falseType[code] << std::endl;
   }
-
+  // std::cout << __LINE__ << std::endl;
 
 }
 
@@ -55,11 +60,11 @@ int main() {
       // formulaStr += line[split];
     }
     formulaStr = line.substr(0, split);
-    // Tokenizer t(formulaStr);
-    // std::cout << t.getTotal() << std::endl;
-    // for (int i = 0; i < t.getTotal(); i++) {
-    //   std::cout << t.getToken().content << std::endl;
-    //   t.addCounter();
+    // Tokenizer tk(formulaStr);
+    // std::cout << tk.getTotal() << std::endl;
+    // for (int i = 0; i < tk.getTotal(); i++) {
+    //   std::cout << tk.getToken().content << std::endl;
+    //   tk.addCounter();
     // }
     if (split + 1 < len) {
       assignmentStr = line.substr(split + 1, len - 1 - split);
@@ -78,12 +83,14 @@ int main() {
       }
       t.addCounter();
     }
+    std::cout << __LINE__ << std::endl;
     for (int i = 0; i < var.size(); i++) {
       if (!assignment.count(var[i])) {
         code = 1;
         std::cout << "Error: " << falseType[code] << std::endl;
       }
     }
+    std::cout << __LINE__ << std::endl;
     if (code == -1) {
       bool res = root->evaluate(assignment);
       std::cout << "answer: " << res << std::endl;
@@ -93,6 +100,7 @@ int main() {
     }
     // assignment.clear();
     code = -1;
+    // std::cout << __LINE__ << std::endl;
 
     // Tokenizer t(line);
 

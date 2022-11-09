@@ -29,7 +29,7 @@ TreeNode *FormulaParser::parseTerm() {
     // tknzr->addCounter();
     if (!tknzr->currTokenType("RPR")) {
       tknzr->isFalse = 0;
-      std::cout << __LINE__ << std::endl;
+      // std::cout << __LINE__ << std::endl;
     }
     else {
       // std::cout << __LINE__ << ": "<< tknzr->getCounter() << std::endl;
@@ -63,7 +63,7 @@ TreeNode *FormulaParser::parseTerm() {
   }
   else {
     tknzr->isFalse = 0;
-    std::cout << __LINE__ << std::endl;
+    // std::cout << __LINE__ << std::endl;
 
   }
   return nullptr;
@@ -89,6 +89,7 @@ TreeNode *FormulaParser::parseFormula() {
     addNode->updateChildren(t1, t2);
     return addNode;
   }
+  // std::cout << __LINE__ << std::endl;
   // if (tknzr->hasToken()) {
   //   tknzr->isFalse = 0;
   //   std::cout << __LINE__ << ": " << tknzr->getToken().content << std::endl;  }
@@ -97,6 +98,7 @@ TreeNode *FormulaParser::parseFormula() {
 
 TreeNode * FormulaParser::getTreeRoot() {
   // your code starts here
+  std::cout << __LINE__ << std::endl;
   return parseFormula();
 }
 
