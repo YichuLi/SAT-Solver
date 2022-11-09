@@ -98,7 +98,7 @@ TreeNode *FormulaParser::parseFormula() {
 
 TreeNode * FormulaParser::getTreeRoot() {
   // your code starts here
-  std::cout << __LINE__ << std::endl;
+  // std::cout << __LINE__ << std::endl;
   return parseFormula();
 }
 

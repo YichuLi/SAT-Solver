@@ -4,7 +4,8 @@
 #include "parser.h"
 #include "treeNode.h"
 
-std::string falseType[] = { "Invalid input", "Incomplete assignment", "Contradicting assignment"};
+std::string falseType[] = { "invalid input", "incomplete assignment", "contradicting assignment"};
+std::vector<int> arr =  {0,0,0};
 int code = -1;
 TreeNode* root;
 std::map<std::string, bool> assignment;
@@ -14,29 +15,24 @@ void parseLine(const std::string &line, std::string &formulaStr, std::string &as
   // your code starts here
   FormulaParser* fp = new FormulaParser(formulaStr);
   root = fp->getTreeRoot();
-  std::cout << root->getContent() << std::endl;
-  std::cout << root->getR()->getContent() << std::endl;
-  std::cout << root->getR()->getL()->getContent() << std::endl;
-  std::cout << __LINE__ << std::endl;
+
   if (fp->hasToken()) {
     code = 0;
-    std::cout << "Error: " << falseType[code] << std::endl;
+    arr[code] = 1;
+    // std::cout << "Error: " << falseType[code] << std::endl;
   }
   else if (fp->getFalse() != -1) {
     code = fp->getFalse();
-    std::cout << "Error: " << falseType[code] << std::endl;
+    arr[code] = 1;
+    // std::cout << "Error: " << falseType[code] << std::endl;
   }
-  // else {
-  //   std::cout << root->getContent() << std::endl;
-  //   std::cout << root->getL()->getContent() << std::endl;
-  //   std::cout << root->getR()->getContent() << std::endl;
-  // }
-  // std::cout << __LINE__ << std::endl;
+
   AssignmentParser* ap = new AssignmentParser(assignmentStr);
   assignment = ap->parseAssignment();
   if (ap->getFalse() != -1) {
     code = ap->getFalse();
-    std::cout << "Error: " << falseType[code] << std::endl;
+    arr[code] = 1;
+    // std::cout << "Error: " << falseType[code] << std::endl;
   }
   // std::cout << __LINE__ << std::endl;
 
@@ -71,7 +67,8 @@ int main() {
     }
     else if (line[split] != ';'){
       code = 0;
-      std::cout << "Error: " << falseType[code] << std::endl;
+      arr[code] = 1;
+      // std::cout << "Error: " << falseType[code] << std::endl;
     }
     parseLine(line, formulaStr, assignmentStr);
 
@@ -83,23 +80,38 @@ int main() {
       }
       t.addCounter();
     }
-    std::cout << __LINE__ << std::endl;
+    // std::cout << __LINE__ << std::endl;
     for (int i = 0; i < var.size(); i++) {
       if (!assignment.count(var[i])) {
         code = 1;
-        std::cout << "Error: " << falseType[code] << std::endl;
+        arr[code] = 1;
+        // std::cout << "Error: " << falseType[code] << std::endl;
       }
     }
-    std::cout << __LINE__ << std::endl;
+    // std::cout << __LINE__ << std::endl;
     if (code == -1) {
       bool res = root->evaluate(assignment);
-      std::cout << "answer: " << res << std::endl;
+      std::cout << res << std::endl;
     }
     else {
-      std::cout << "Error: " << falseType[code] << std::endl;
+      if (arr[0] == 1) {
+        std::cout << "Error: " << falseType[0] << std::endl;
+      }
+      else if (arr[1] == 1) {
+        std::cout << "Error: " << falseType[1] << std::endl;
+      }
+      else if (arr[2] == 1) {
+        std::cout << "Error: " << falseType[2] << std::endl;
+      }
+      else {
+        std::cout << "Wrong with code" << std::endl;
+      }
     }
     // assignment.clear();
     code = -1;
+    arr[0] = 0;
+    arr[1] = 0;
+    arr[2] = 0;
     // std::cout << __LINE__ << std::endl;
 
     // Tokenizer t(line);
