@@ -21,7 +21,7 @@ class TreeNode {
     virtual ~TreeNode();
     TreeNode* getL();
     TreeNode* getR();
-    TreeNode* DestroyRecursive(TreeNode* node);
+    void DestroyRecursive(TreeNode* node);
 };
 
 // concrete tree node of operator type

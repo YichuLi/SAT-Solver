@@ -78,7 +78,7 @@ TreeNode::~TreeNode() {
   DestroyRecursive(this);
 }
 
-TreeNode* TreeNode::DestroyRecursive(TreeNode* node)
+void TreeNode::DestroyRecursive(TreeNode* node)
 {
     if (node)
     {

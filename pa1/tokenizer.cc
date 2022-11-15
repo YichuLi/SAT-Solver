@@ -118,7 +118,7 @@ Tokenizer::Tokenizer(std::string ln) {
 
 bool Tokenizer::advanceToken() {
   // your code starts here
-  if (counter + 1 < tokens.size()) {
+  if ((unsigned)counter + 1 < tokens.size()) {
     return true;
   }
   return false;
@@ -134,7 +134,7 @@ bool Tokenizer::currTokenType(std::string stype) {
 
 bool Tokenizer::hasToken() const {
   // your code starts here
-  if (counter < tokens.size()) {
+  if ((unsigned)counter < tokens.size()) {
     return true;
   }
   return false;

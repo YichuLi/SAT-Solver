@@ -68,7 +68,7 @@ int main() {
       }
       t.addCounter();
     }
-    for (int i = 0; i < var.size(); i++) {
+    for (size_t i = 0; i < var.size(); i++) {
       if (!assignment.count(var[i])) {
         code = 1;
         arr[code] = 1;
