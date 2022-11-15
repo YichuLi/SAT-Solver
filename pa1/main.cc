@@ -32,10 +32,7 @@ void parseLine(const std::string &line, std::string &formulaStr, std::string &as
   if (ap->getFalse() != -1) {
     code = ap->getFalse();
     arr[code] = 1;
-    // std::cout << "Error: " << falseType[code] << std::endl;
   }
-  // std::cout << __LINE__ << std::endl;
-
 }
 
 
@@ -45,30 +42,21 @@ int main() {
   std::string line; // store each input line
   while (std::getline(std::cin, line)) // continuously asking for new inputs from standard input
   {
-    // std::string line; // store each input line
     std::string formulaStr; // store the formula string
     std::string assignmentStr; // store the assignment string
     // your code starts here
-    // std::getline(std::cin, line);
     int len = line.size();
     int split;
     for (split = 0; split < len && line[split] != ';'; split++) {
       // formulaStr += line[split];
     }
     formulaStr = line.substr(0, split);
-    // Tokenizer tk(formulaStr);
-    // std::cout << tk.getTotal() << std::endl;
-    // for (int i = 0; i < tk.getTotal(); i++) {
-    //   std::cout << tk.getToken().content << std::endl;
-    //   tk.addCounter();
-    // }
     if (split + 1 < len) {
       assignmentStr = line.substr(split + 1, len - 1 - split);
     }
     else if (line[split] != ';'){
       code = 0;
       arr[code] = 1;
-      // std::cout << "Error: " << falseType[code] << std::endl;
     }
     parseLine(line, formulaStr, assignmentStr);
 
@@ -80,15 +68,12 @@ int main() {
       }
       t.addCounter();
     }
-    // std::cout << __LINE__ << std::endl;
     for (int i = 0; i < var.size(); i++) {
       if (!assignment.count(var[i])) {
         code = 1;
         arr[code] = 1;
-        // std::cout << "Error: " << falseType[code] << std::endl;
       }
     }
-    // std::cout << __LINE__ << std::endl;
     if (code == -1) {
       bool res = root->evaluate(assignment);
       std::cout << res << std::endl;
@@ -107,24 +92,10 @@ int main() {
         std::cout << "Wrong with code" << std::endl;
       }
     }
-    // assignment.clear();
     code = -1;
     arr[0] = 0;
     arr[1] = 0;
     arr[2] = 0;
-    // std::cout << __LINE__ << std::endl;
-
-    // Tokenizer t(line);
-
-    // if (t.isFalse != -1) {
-    //   std::cout << "Error: " << falseType[t.isFalse] << std::endl;
-    //   continue;
-    // }
-
-    // while(t.hasToken()) {
-    //   std::cout << t.getToken().content << std::endl;
-    //   t.addCounter();
-    // }
   }
   return 0;
 }

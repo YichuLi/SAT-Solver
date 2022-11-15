@@ -7,7 +7,6 @@ FormulaParser::FormulaParser(std::string ln): tknzr {new Tokenizer{ln}} {}
 TreeNode *FormulaParser::parseConjTerm() {
   // your code starts here
   TreeNode* t1 = parseTerm();
-  // tknzr->addCounter();
   while (true) {
     if (tknzr->currTokenType("MULT") == false) {
       break;
@@ -22,25 +21,16 @@ TreeNode *FormulaParser::parseConjTerm() {
 }
 
 TreeNode *FormulaParser::parseTerm() {
-  // your code starts here
+  // your code starts here 
   if (tknzr->currTokenType("LPR")) {
     tknzr->addCounter();
     TreeNode* t = parseFormula();
     // tknzr->addCounter();
     if (!tknzr->currTokenType("RPR")) {
       tknzr->isFalse = 0;
-      // std::cout << __LINE__ << std::endl;
     }
     else {
-      // std::cout << __LINE__ << ": "<< tknzr->getCounter() << std::endl;
-      // std::cout << __LINE__ << ": "<< tknzr->getToken().content << std::endl;
-      // std::cout << tknzr->getCounter() << std::endl;
-      // std::cout << tknzr->getTotal() << std::endl;
-      // std::cout << "add counter" << std::endl;
       tknzr->addCounter();
-      // std::cout << __LINE__ << ": "<< tknzr->getCounter() << std::endl;
-      // std::cout << __LINE__ << ": "<< tknzr->getToken().type << "1" << std::endl;
-      // std::cout << __LINE__ << ": "<< tknzr->getToken().content << "2" << std::endl;
       return t;
     }
   }
@@ -63,8 +53,6 @@ TreeNode *FormulaParser::parseTerm() {
   }
   else {
     tknzr->isFalse = 0;
-    // std::cout << __LINE__ << std::endl;
-
   }
   return nullptr;
 }
@@ -74,13 +62,7 @@ TreeNode *FormulaParser::parseFormula() {
   TreeNode* t1 = parseConjTerm();
   while (true) {
     TreeNode* t2;
-    // if (!tknzr->hasToken()) {
-    //   break;
-    // }
-    // tknzr->addCounter();
     if (!tknzr->currTokenType("ADD")) {
-      // tknzr->isFalse = 0;
-      // std::cout << __LINE__ << ": " << tknzr->getToken().content << std::endl;
       break;
     }
     tknzr->addCounter();
@@ -89,16 +71,10 @@ TreeNode *FormulaParser::parseFormula() {
     addNode->updateChildren(t1, t2);
     return addNode;
   }
-  // std::cout << __LINE__ << std::endl;
-  // if (tknzr->hasToken()) {
-  //   tknzr->isFalse = 0;
-  //   std::cout << __LINE__ << ": " << tknzr->getToken().content << std::endl;  }
   return t1;
 }
 
 TreeNode * FormulaParser::getTreeRoot() {
-  // your code starts here
-  // std::cout << __LINE__ << std::endl;
   return parseFormula();
 }
 
@@ -111,6 +87,7 @@ bool FormulaParser::hasToken() {
 }
 FormulaParser::~FormulaParser() {
   // your code starts here
+  delete tknzr;
 }
 
 AssignmentParser::AssignmentParser(std::string ln): tknzr {new Tokenizer{ln}} {}
@@ -172,4 +149,5 @@ int AssignmentParser::getFalse() {
 
 AssignmentParser::~AssignmentParser() {
   // your code starts here
+  delete tknzr;
 }

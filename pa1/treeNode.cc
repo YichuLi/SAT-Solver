@@ -75,4 +75,15 @@ void VariableNode::setFalse(int code) {
 
 TreeNode::~TreeNode() {
   // your code starts here
+  DestroyRecursive(this);
+}
+
+TreeNode* TreeNode::DestroyRecursive(TreeNode* node)
+{
+    if (node)
+    {
+        DestroyRecursive(node->leftChild);
+        DestroyRecursive(node->rightChild);
+        delete node;
+    }
 }

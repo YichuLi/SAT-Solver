@@ -36,17 +36,7 @@ bool isVarName(std::string str) {
 }
 
 Tokenizer::Tokenizer(std::string ln) {
-  // complete the constructor
-  // std::cout << "1";
-  // std::stringstream stream(ln);
-  // const char delim = ' ';
-  // while (std::getline(stream, str, delim)) {
-  //   std::cout << str << std::endl;
-  //   if (str == " ") continue;
-  //   tokens.push_back(getToken());
-  // }
   int len = ln.size();
-  // int start = 0;
   for (int i = 0; i < len; i++) {
     if (ln[i] == ' ') {
       continue;
