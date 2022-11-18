@@ -111,18 +111,15 @@ std::map<std::string, bool> AssignmentParser::parseAssignment() {
       break;
     }
     std::string value = tknzr->getToken().content;
-    if (results.count(name)) { // duplicate assignment
+    if (results.count(name) && ((value == "0" && results[name] == true) || (value == "1" && results[name] == false))) { // contradict assignment
       tknzr->isFalse = 2;
-      // std::cout << "duplicate!" << std::endl;
       break;
     }
     if (value == "0") {
       results[name] = false;
-      // std::cout << name << " is 0" << std::endl;
     }
     else if (value == "1") {
       results[name] = true;
-      // std::cout << name << " is 1" << std::endl;
     }
     else {
       tknzr->isFalse = 0;
