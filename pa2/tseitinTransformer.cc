@@ -4,7 +4,31 @@ TseitinTransformer::TseitinTransformer(TreeNode *root): formulaRoot{root} {}
 
 int TseitinTransformer::transSubformula(TreeNode* subRoot) {
   // your code starts here
-  return 0;
+  std::string content = subRoot->getContent();
+  if (content == "-") {
+    int child = transSubformula(subRoot->getLeftChild());
+    addNegEq(varIdCounter, child);
+  }
+  else if (content == "+") {
+    int l_child = transSubformula(subRoot->getLeftChild());
+    int r_child = transSubformula(subRoot->getRightChild());
+    addOrEq(varIdCounter, l_child, r_child);
+  }
+  else if (content == "*") {
+    int l_child = transSubformula(subRoot->getLeftChild());
+    int r_child = transSubformula(subRoot->getRightChild());
+    addAndEq(varIdCounter, l_child, r_child);
+  }
+  else {
+    if (varIdTable.count(content)) {
+      return varIdTable[content];
+    }
+    else {
+      varIdTable[content] = varIdCounter;
+    }
+  }
+  varIdCounter++;
+  return varIdCounter;
 }
 
 void TseitinTransformer::addNegEq(int curID, int childID) {
@@ -21,6 +45,7 @@ void TseitinTransformer::addAndEq(int curID, int leftID, int rightID) {
 
 std::vector<std::vector<int>> TseitinTransformer::transform() {
   // your code starts here
+  
   return cnf;
 }
 
