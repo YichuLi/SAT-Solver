@@ -1,0 +1,13 @@
+main.d
+main.o
+parser.d
+parser.o
+tokenizer.d
+tokenizer.o
+treeNode.d
+treeNode.o
+tempCodeRunnerFile.cc
+test.in
+pa2
+tseitinTransformer.o
+tseitinTransformer.d

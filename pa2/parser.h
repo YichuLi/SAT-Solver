@@ -24,13 +24,13 @@ class FormulaParser {
 };
 
 // Parser for the Assignment
-class AssignmentParser {
-    Tokenizer *tknzr;
-  public:
-    AssignmentParser(std::string ln);
-    std::map<std::string, bool> parseAssignment();
-    int getFalse();
-    ~AssignmentParser();
-};
+// class AssignmentParser {
+//     Tokenizer *tknzr;
+//   public:
+//     AssignmentParser(std::string ln);
+//     std::map<std::string, bool> parseAssignment();
+//     int getFalse();
+//     ~AssignmentParser();
+// };
 
 #endif

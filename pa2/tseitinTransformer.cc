@@ -9,19 +9,19 @@ int TseitinTransformer::transSubformula(TreeNode* subRoot) {
   if (content == "-") {
     varIdCounter++;
     int child = transSubformula(subRoot->getLeftChild());
-    addNegEq(varIdCounter, child);
+    addNegEq(currIdCounter, child);
   }
   else if (content == "+") {
     varIdCounter++;
     int l_child = transSubformula(subRoot->getLeftChild());
     int r_child = transSubformula(subRoot->getRightChild());
-    addOrEq(varIdCounter, l_child, r_child);
+    addOrEq(currIdCounter, l_child, r_child);
   }
   else if (content == "*") {
     varIdCounter++;
     int l_child = transSubformula(subRoot->getLeftChild());
     int r_child = transSubformula(subRoot->getRightChild());
-    addAndEq(varIdCounter, l_child, r_child);
+    addAndEq(currIdCounter, l_child, r_child);
   }
   else {
     if (varIdTable.count(content)) {
@@ -65,7 +65,18 @@ std::vector<std::vector<int>> TseitinTransformer::transform() {
 
 std::string TseitinTransformer::cnfString() const {
   std::string result = "";
+  if (cnf.size() == 0) {
+    return "Error";
+  }
   // your code starts here
+  for (auto v : cnf) {
+    result += "[";
+    for (int i : v) {
+      result += std::to_string(i);
+      result += ",";
+    }
+    result += "]";
+  }
   return result;
 }
 
