@@ -11,3 +11,5 @@ test.in
 pa2
 tseitinTransformer.o
 tseitinTransformer.d
+minisat
+build

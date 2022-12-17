@@ -71,18 +71,22 @@ int main() {
       }
       t.addCounter();
     }
-    // for (size_t i = 0; i < var.size(); i++) {
-    //   if (!assignment.count(var[i])) {
-    //     code = 1;
-    //     arr[code] = 1;
-    //   }
-    // }
     if (code == -1) {
       // bool res = root->evaluate(assignment);
       // std::cout << res << std::endl;
       TseitinTransformer ttf(root);
       ttf.transform();
-      std::cout << ttf.cnfString() << std::endl;
+      // std::cout << ttf.cnfString() << std::endl;
+      std::vector<std::vector<int>> temp = ttf.getCnf();
+      // std::cout << ttf.getVarNum() << std::endl;
+      // satCallingMiniSat(ttf.getVarNum(), temp);
+      if (satCallingMiniSat(ttf.getVarNum(), temp)) {
+        std::cout << "sat" << std::endl;
+      }
+      else {
+        std::cout << "unsat" << std::endl;
+      }
+      
     }
     else {
       if (arr[0] == 1) {

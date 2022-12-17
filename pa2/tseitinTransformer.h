@@ -23,6 +23,7 @@ class TseitinTransformer
     std::vector<std::vector<int>> transform();
     std::string cnfString() const; // a debug helper function to check whehter the correctness of transformation
     unsigned int getVarNum() const;
+    std::vector<std::vector<int>> getCnf();
 };
 
 #endif

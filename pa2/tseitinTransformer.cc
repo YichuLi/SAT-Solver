@@ -82,5 +82,10 @@ std::string TseitinTransformer::cnfString() const {
 
 unsigned int TseitinTransformer::getVarNum() const {
   // your code starts here
-  return 0;
+  unsigned int res = varIdCounter - 1;
+  return res;
+}
+
+std::vector<std::vector<int>> TseitinTransformer::getCnf() {
+  return cnf;
 }

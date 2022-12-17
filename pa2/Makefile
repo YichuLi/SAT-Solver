@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++14 -g -Wall -MMD -Werror=vla
-OBJECTS = main.o tokenizer.o treeNode.o parser.o tseitinTransformer.o# add if needed
+OBJECTS = main.o tokenizer.o treeNode.o parser.o tseitinTransformer.o satSolver.o # add if needed
 DEPENDS = ${OBJECTS:.o=.d}
 EXEC = pa2
 
