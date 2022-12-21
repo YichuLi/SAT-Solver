@@ -22,7 +22,6 @@ bool satCallingMiniSat(unsigned int numVar, std::vector<std::vector<int>> &cnf) 
       else {
         literal = literals[lit - 1];
       }
-      // Minisat::Lit literal = Minisat::mkLit(std::abs(lit), lit < 0);
 
       clauseVec.push(literal);
     }

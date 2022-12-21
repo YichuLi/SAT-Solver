@@ -48,8 +48,6 @@ TreeNode *FormulaParser::parseTerm() {
   }
   else {
     tknzr->isFalse = 0;
-    // std::cout << __LINE__ << std::endl;
-    // std::cout << tknzr->getToken().content << std::endl;
   }
   return nullptr;
 }
@@ -86,62 +84,3 @@ FormulaParser::~FormulaParser() {
   // your code starts here
   delete tknzr;
 }
-
-// AssignmentParser::AssignmentParser(std::string ln): tknzr {new Tokenizer{ln}} {}
-
-// std::map<std::string, bool> AssignmentParser::parseAssignment() {
-//   std::map<std::string, bool> results;
-//   // your code starts here
-//   if (tknzr->hasToken() && !tknzr->currTokenType("VAR_NAME")) {
-//     tknzr->isFalse = 0;
-//   }
-//   while (tknzr->currTokenType("VAR_NAME")) {
-//     std::string name = tknzr->getToken().content;
-//     tknzr->addCounter();
-//     if (!tknzr->currTokenType("COL")) {
-//       tknzr->isFalse = 0;
-//       break;
-//     }
-//     tknzr->addCounter();
-//     if (!tknzr->currTokenType("CONST")) {
-//       tknzr->isFalse = 0;
-//       break;
-//     }
-//     std::string value = tknzr->getToken().content;
-//     if (results.count(name) && ((value == "0" && results[name] == true) || (value == "1" && results[name] == false))) { // contradict assignment
-//       tknzr->isFalse = 2;
-//       break;
-//     }
-//     if (value == "0") {
-//       results[name] = false;
-//     }
-//     else if (value == "1") {
-//       results[name] = true;
-//     }
-//     else {
-//       tknzr->isFalse = 0;
-//       break;
-//     }
-//     tknzr->addCounter();
-//     if (!tknzr->hasToken()) {
-//       break;
-//     }
-//     if (!tknzr->currTokenType("COMMA")) {
-//       tknzr->isFalse = 0;
-//       break;
-//     }
-//     else {
-//       tknzr->addCounter();
-//     }
-//   }
-//   return results;
-// }
-
-// int AssignmentParser::getFalse() {
-//   return tknzr->isFalse;
-// }
-
-// AssignmentParser::~AssignmentParser() {
-//   // your code starts here
-//   delete tknzr;
-// }

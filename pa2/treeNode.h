@@ -15,7 +15,6 @@ class TreeNode {
     TreeNode *getRightChild() const;
     // your code starts here
     std::string getContent() const;
-    // std::string getType() const;
     virtual bool evaluate(const std::map<std::string, bool> &assignment) const = 0; // pure virtual method
     void updateLeftChild(TreeNode *lChild); // for the operator "-", the operand is stored in leftChild
     void updateChildren(TreeNode *lChild, TreeNode *rChild);

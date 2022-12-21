@@ -42,11 +42,7 @@ Tokenizer::Tokenizer(std::string ln) {
       continue;
     }
     Token t;
-    // if (ln[i] == ';') {
-    //   t.type = "SEMI";
-    //   t.content = ";";
-    //   tokens.push_back(t);
-    // }
+
     if (ln[i] == '+') {
       t.type = "ADD";
       t.content = "+";

@@ -19,10 +19,7 @@ class Tokenizer
   private:
     std::vector<Token> tokens;
     int counter = 0;
-    // std::string str;
   public:
-    // std::vector<Token> tokens;
-    // std::string str;
     Tokenizer(std::string ln);
     bool advanceToken(); // advance to the next token; return false if no more token exist
     bool nextTokenType(std::string type);
