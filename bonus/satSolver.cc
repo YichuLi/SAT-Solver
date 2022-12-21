@@ -139,14 +139,25 @@ void PLP(std::vector<std::vector<int>> &cnf, std::vector<int> &assignment) {
 }
 
 bool is_exist(const std::vector<std::vector<int> >&  v, int item){
-  for (auto row = v.begin(); row != v.end(); row++) {
-      if (std::find(row->begin(), row->end(), item) != row->end()) {
-        return true;
-      }
-      if (std::find(row->begin(), row->end(), -item) != row->end()) {
-        return true;
-      }
+  if (v.size() == 0) {
+    return false;
   }
+  for (int i = 0; i < v.size(); i++) {
+    for (int j = 0; j < v[i].size(); j++) {
+      if (abs(v[i][j]) == item) {
+        return true;
+      }
+    }
+  }
+  return false;
+  // for (auto row = v.begin(); row != v.end(); row++) {
+  //     if (std::find(row->begin(), row->end(), item) != row->end()) {
+  //       return true;
+  //     }
+  //     if (std::find(row->begin(), row->end(), -item) != row->end()) {
+  //       return true;
+  //     }
+  // }
 
   return false;
 }

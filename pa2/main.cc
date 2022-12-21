@@ -36,7 +36,6 @@ int main() {
   while (std::getline(std::cin, line)) // continuously asking for new inputs from standard input
   {
     // your code starts here
-    int len = line.size();
     parseLine(line);
 
     Tokenizer t(line);
