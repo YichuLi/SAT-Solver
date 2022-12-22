@@ -113,7 +113,6 @@ std::vector<std::vector<int>> BCP(std::vector<std::vector<int>> &cnf, std::vecto
 }
 
 void PLP(std::vector<std::vector<int>> &cnf, std::vector<int> &assignment) {
-  std::vector<std::vector<int>> cnf2;
   for (int i = 1; i < assignment.size(); i++) {
     bool hasPos = false;
     bool hasNeg = false;
@@ -149,15 +148,5 @@ bool is_exist(const std::vector<std::vector<int> >&  v, int item){
       }
     }
   }
-  return false;
-  // for (auto row = v.begin(); row != v.end(); row++) {
-  //     if (std::find(row->begin(), row->end(), item) != row->end()) {
-  //       return true;
-  //     }
-  //     if (std::find(row->begin(), row->end(), -item) != row->end()) {
-  //       return true;
-  //     }
-  // }
-
   return false;
 }
