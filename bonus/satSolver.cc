@@ -118,7 +118,7 @@ void PLP(std::vector<std::vector<int>> &cnf, std::vector<int> &assignment) {
     bool hasNeg = false;
     if (assignment[i] == 2) {
       for (auto& clause : cnf) {
-        for (int lit : clause) {
+        for (unsigned int lit : clause) {
           if (i == lit) {
             hasPos = true;
           }
