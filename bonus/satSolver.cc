@@ -17,7 +17,7 @@ bool DPLL(std::vector<std::vector<int>> &cnf, std::vector<int> &assignment) {
   // choose_var
   int num = -1;
   std::vector<int> temp1 = assignment;
-  for (int i = 1; i < assignment.size(); i++) {
+  for (unsigned int i = 1; i < assignment.size(); i++) {
     if (assignment[i] != 2 && is_exist(cnf1, i)) {
       num = -1;
       break;
@@ -113,7 +113,7 @@ std::vector<std::vector<int>> BCP(std::vector<std::vector<int>> &cnf, std::vecto
 }
 
 void PLP(std::vector<std::vector<int>> &cnf, std::vector<int> &assignment) {
-  for (int i = 1; i < assignment.size(); i++) {
+  for (unsigned int i = 1; i < assignment.size(); i++) {
     bool hasPos = false;
     bool hasNeg = false;
     if (assignment[i] == 2) {
@@ -141,8 +141,8 @@ bool is_exist(const std::vector<std::vector<int> >&  v, int item){
   if (v.size() == 0) {
     return false;
   }
-  for (int i = 0; i < v.size(); i++) {
-    for (int j = 0; j < v[i].size(); j++) {
+  for (unsigned int i = 0; i < v.size(); i++) {
+    for (unsigned int j = 0; j < v[i].size(); j++) {
       if (abs(v[i][j]) == item) {
         return true;
       }
