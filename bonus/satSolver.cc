@@ -1,6 +1,4 @@
 #include "satSolver.h"
-#include "minisat/core/SolverTypes.h"
-#include "minisat/core/Solver.h"
 #include <memory>
 #include <map>
 #include <iostream>
